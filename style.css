@@ -1,0 +1,139 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 200px;
+    background-color: #f1f1f5;
+    color: #0b0b0b;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #89dceb;
+    margin-top: 2px;
+}
+
+h1 {
+    font-size: 2.5em;
+    border-bottom: 2px solid #cba6f7;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #89dceb;
+}
+
+h2:hover {
+    color: #f38ba8;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #cba6f7;
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+/* Lists */
+ul {
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Math Expressions */
+.math {
+    font-family: "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1.1em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    color: #cba6f7;
+}
+
+/* Sections */
+.section {
+    background-color: #fcfcfc;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(14, 13, 13, 0.983);
+    margin-bottom: 20px;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    overflow: hidden;
+}
+
+/* Collapsible Sections */
+.section.collapsed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+}
+
+/* Toggle Button */
+.toggle-button {
+    background-color: #060606;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+    background-color: #f38ba8;
+}
+
+/* Links */
+a {
+    color: #f38ba8;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #cba6f7;
+    text-decoration: underline;
+}
+
+/* Code Blocks */
+code {
+    background-color: #2b2d42;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-family: "Courier New", monospace;
+    color: #cba6f7;
+}
+
+/* Responsive Design
+@media (max-width: 768px) {
+    body {
+        margin: px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+} */
