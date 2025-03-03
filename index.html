@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrostatics</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" async src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script type="text/javascript" async id="MathJax-script"
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="script.js" defer></script>
+
+</head>
+
+<body>
+    <h1>Electrostatics Topics</h1>
+
+    <h2>Coordinate Systems</h2>
+    <p>
+        In electrostatics, problems are often solved using different coordinate systems depending on the symmetry of the
+        problem. The three most common coordinate systems are:
+    </p>
+    <ul>
+        <li><strong>Cartesian (Rectangular) Coordinates:</strong> \((x, y, z)\)</li>
+        <li><strong>Cylindrical Coordinates:</strong> \((\rho, \phi, z)\)</li>
+        <li><strong>Spherical Coordinates:</strong> \((r, \theta, \phi)\)</li>
+    </ul>
+    <p>
+        Each system has its own set of unit vectors and differential elements (length, area, volume) that are used in
+        calculations.
+    </p>
+
+    <h2>Del Operator (\(\nabla\))</h2>
+    <p>
+        The del operator (\(\nabla\)) is a vector differential operator used in vector calculus. In Cartesian
+        coordinates, it is defined as:
+        \[
+        \nabla = \mathbf{i} \frac{\partial}{\partial x} + \mathbf{j} \frac{\partial}{\partial y} + \mathbf{k}
+        \frac{\partial}{\partial z}
+        \]
+        The del operator is used to compute the <strong>gradient</strong>, <strong>divergence</strong>, and
+        <strong>curl</strong> of scalar and vector fields.
+    </p>
+
+    <h2>Gradient</h2>
+    <p>
+        The gradient of a scalar field \(V\) is a vector that points in the direction of the steepest increase of \(V\).
+        It is defined as:
+        \[
+        \nabla V = \frac{\partial V}{\partial x} \mathbf{i} + \frac{\partial V}{\partial y} \mathbf{j} + \frac{\partial
+        V}{\partial z} \mathbf{k}
+        \]
+        The gradient is used to calculate the electric field \(\mathbf{E}\) from the electric potential \(V\):
+        \[
+        \mathbf{E} = -\nabla V
+        \]
+    </p>
+
+    <h2>Divergence</h2>
+    <p>
+        The divergence of a vector field \(\mathbf{A}\) measures the net outflow of the field from an infinitesimal
+        volume. It is defined as:
+        \[
+        \nabla \cdot \mathbf{A} = \frac{\partial A_x}{\partial x} + \frac{\partial A_y}{\partial y} + \frac{\partial
+        A_z}{\partial z}
+        \]
+        In electrostatics, the divergence of the electric field \(\mathbf{E}\) is related to the charge density \(\rho\)
+        by Gauss's law:
+        \[
+        \nabla \cdot \mathbf{E} = \frac{\rho}{\epsilon_0}
+        \]
+    </p>
+
+    <h2>Divergence Theorem</h2>
+    <p>
+        The divergence theorem relates the flux of a vector field through a closed surface to the volume integral of its
+        divergence:
+        \[
+        \int_V (\nabla \cdot \mathbf{A}) \, dV = \oint_S \mathbf{A} \cdot d\mathbf{S}
+        \]
+        This theorem is used to derive Gauss's law in integral form:
+        \[
+        \oint_S \mathbf{E} \cdot d\mathbf{S} = \frac{Q_{\text{enc}}}{\epsilon_0}
+        \]
+    </p>
+
+    <h2>Stoke’s Theorem</h2>
+    <p>
+        Stoke’s theorem relates the circulation of a vector field around a closed loop to the surface integral of its
+        curl:
+        \[
+        \oint_C \mathbf{A} \cdot d\mathbf{l} = \int_S (\nabla \times \mathbf{A}) \cdot d\mathbf{S}
+        \]
+        In electrostatics, this theorem is used to show that the curl of the electric field \(\mathbf{E}\) is zero:
+        \[
+        \nabla \times \mathbf{E} = 0
+        \]
+    </p>
+
+    <h2>Introduction to Electrostatics</h2>
+    <p>
+        Electrostatics deals with the study of electric charges at rest. The fundamental law governing electrostatics is
+        <strong>Coulomb's Law</strong>, which states that the force between two point charges \(Q_1\) and \(Q_2\) is:
+        \[
+        \mathbf{F} = \frac{1}{4\pi\epsilon_0} \frac{Q_1 Q_2}{r^2} \mathbf{a}_r
+        \]
+        where \(\epsilon_0\) is the permittivity of free space, \(r\) is the distance between the charges, and
+        \(\mathbf{a}_r\) is the unit vector pointing from \(Q_1\) to \(Q_2\).
+    </p>
+
+    <h2>Coulomb's Law</h2>
+    <p>
+        <strong>Coulomb's Law</strong> describes the force between two point charges. It states that:
+    </p>
+    <p class="math">
+        The force \(\mathbf{F}\) between two point charges \(Q_1\) and \(Q_2\) is directly proportional to the product
+        of the charges and inversely proportional to the square of the distance \(r\) between them. The force acts along
+        the line joining the two charges.
+    </p>
+    <p class="math">
+        Mathematically, Coulomb's Law is expressed as:
+        \[
+        \mathbf{F} = \frac{1}{4\pi\epsilon_0} \frac{Q_1 Q_2}{r^2} \mathbf{a}_r
+        \]
+    </p>
+    <p>
+        Where:
+    <ul>
+        <li>\(\mathbf{F}\) is the force between the charges (in Newtons).</li>
+        <li>\(Q_1\) and \(Q_2\) are the magnitudes of the two charges (in Coulombs).</li>
+        <li>\(r\) is the distance between the charges (in meters).</li>
+        <li>\(\epsilon_0\) is the permittivity of free space (\(8.854 \times 10^{-12} \, \text{F/m}\)).</li>
+        <li>\(\mathbf{a}_r\) is the unit vector pointing from \(Q_1\) to \(Q_2\).</li>
+    </ul>
+    </p>
+
+    <h3>Derivation of Coulomb's Law</h3>
+    <p>
+        Coulomb's Law can be derived from the principles of electrostatics and the concept of the electric field.
+    </p>
+    <p>
+        <strong>Step 1: Electric Field Due to a Point Charge</strong><br>
+        The electric field \(\mathbf{E}\) due to a point charge \(Q\) is given by:
+        \[
+        \mathbf{E} = \frac{1}{4\pi\epsilon_0} \frac{Q}{r^2} \mathbf{a}_r
+        \]
+    </p>
+    <p>
+        <strong>Step 2: Force on a Charge in an Electric Field</strong><br>
+        When a charge \(Q_2\) is placed in the electric field \(\mathbf{E}\) created by \(Q_1\), the force
+        \(\mathbf{F}\) on \(Q_2\) is:
+        \[
+        \mathbf{F} = Q_2 \mathbf{E}
+        \]
+    </p>
+    <p>
+        <strong>Step 3: Substituting the Electric Field</strong><br>
+        Substituting the expression for \(\mathbf{E}\) into the force equation:
+        \[
+        \mathbf{F} = Q_2 \left( \frac{1}{4\pi\epsilon_0} \frac{Q_1}{r^2} \mathbf{a}_r \right)
+        \]
+        \[
+        \mathbf{F} = \frac{1}{4\pi\epsilon_0} \frac{Q_1 Q_2}{r^2} \mathbf{a}_r
+        \]
+    </p>
+    <p>
+        This is the mathematical form of <strong>Coulomb's Law</strong>.
+    </p>
+    
+
+<h3>Electric Field Intensity</h3>
+
+    <h3>Definition</h3>
+    <p>
+        The <strong>Electric Field Intensity</strong> (\(\mathbf{E}\)) at a point in space is defined as the force experienced by a unit positive test charge (\(q_0\)) placed at that point, in the limit as \(q_0\) approaches zero. Mathematically, it is expressed as:
+        \[
+        \mathbf{E} = \lim_{q_0 \to 0} \frac{\mathbf{F}}{q_0}
+        \]
+    </p>
+    <p>
+        Where:
+        <ul>
+            <li>\(\mathbf{E}\) is the electric field intensity (in N/C or V/m).</li>
+            <li>\(\mathbf{F}\) is the force experienced by the test charge (in Newtons).</li>
+            <li>\(q_0\) is the magnitude of the test charge (in Coulombs).</li>
+        </ul>
+    </p>
+
+    <h3>Formula for Electric Field Intensity</h3>
+    <p>
+        The electric field intensity due to a point charge \(Q\) at a distance \(r\) from the charge is given by:
+        \[
+        \mathbf{E} = \frac{1}{4\pi\epsilon_0} \frac{Q}{r^2} \mathbf{a}_r
+        \]
+    </p>
+    <p>
+        Where:
+        <ul>
+            <li>\(\epsilon_0\) is the permittivity of free space (\(8.854 \times 10^{-12} \, \text{F/m}\)).</li>
+            <li>\(Q\) is the source charge (in Coulombs).</li>
+            <li>\(r\) is the distance from the charge (in meters).</li>
+            <li>\(\mathbf{a}_r\) is the unit vector pointing from the source charge to the point where the field is measured.</li>
+        </ul>
+    </p>
+
+    <h3>Derivation of Electric Field Intensity</h3>
+    <p>
+        The electric field intensity can be derived from <strong>Coulomb's Law</strong>.
+    </p>
+    <p>
+        <strong>Step 1: Coulomb's Law</strong><br>
+        According to Coulomb's Law, the force \(\mathbf{F}\) between two point charges \(Q\) and \(q_0\) is:
+        \[
+        \mathbf{F} = \frac{1}{4\pi\epsilon_0} \frac{Q q_0}{r^2} \mathbf{a}_r
+        \]
+    </p>
+    <p>
+        <strong>Step 2: Electric Field Intensity</strong><br>
+        The electric field intensity \(\mathbf{E}\) is defined as the force per unit charge:
+        \[
+        \mathbf{E} = \frac{\mathbf{F}}{q_0}
+        \]
+    </p>
+    <p>
+        <strong>Step 3: Substituting Coulomb's Law</strong><br>
+        Substituting the expression for \(\mathbf{F}\) from Coulomb's Law:
+        \[
+        \mathbf{E} = \frac{1}{q_0} \left( \frac{1}{4\pi\epsilon_0} \frac{Q q_0}{r^2} \mathbf{a}_r \right)
+        \]
+        \[
+        \mathbf{E} = \frac{1}{4\pi\epsilon_0} \frac{Q}{r^2} \mathbf{a}_r
+        \]
+    </p>
+    <p>
+        This is the expression for the electric field intensity due to a point charge.
+    </p>
+
+    <h2>Electric Field Due to Multiple Charges</h2>
+    <p>
+        For a system of \(n\) point charges, the total electric field at a point is the vector sum of the electric fields due to each individual charge:
+        \[
+        \mathbf{E}_{\text{total}} = \sum_{i=1}^n \mathbf{E}_i = \sum_{i=1}^n \frac{1}{4\pi\epsilon_0} \frac{Q_i}{r_i^2} \mathbf{a}_{r_i}
+        \]
+    </p>
+    <h2>Electric Flux Density</h2>
+    
+    <h3>Definition</h3>
+    <p>Electric flux density (<b>D</b>) is a measure of the electric flux passing through a unit area in an electric field. It is related to the electric field intensity (<b>E</b>) and the permittivity of the medium.</p>
+    
+    <h3>Formula</h3>
+    <p>The mathematical expression for electric flux density is given by:</p>
+    <p><b>D = εE</b></p>
+    <p>where:</p>
+    <ul>
+        <li><b>D</b> = Electric flux density (Coulombs per square meter, C/m²)</li>
+        <li><b>E</b> = Electric field intensity (Volts per meter, V/m)</li>
+        <li><b>ε</b> = Permittivity of the medium (Farads per meter, F/m)</li>
+    </ul>
+    
+    <h3>Derivation</h3>
+    <p>Starting from Gauss's law in differential form:</p>
+    <p><b>∇ · D = ρ</b></p>
+    <p>where <b>ρ</b> is the volume charge density (C/m³).</p>
+    
+    <p>Using the relation <b>D = εE</b>, we substitute it into Gauss's law:</p>
+    <p><b>∇ · (εE) = ρ</b></p>
+    <p>If ε is constant, it can be taken out of the divergence operation:</p>
+    <p><b>ε (∇ · E) = ρ</b></p>
+    <p>Since Gauss's law in integral form states:</p>
+    <p><b>∮ D · dA = Q_{enc}</b></p>
+    <p>where <b>Q_{enc}</b> is the total charge enclosed, this confirms that <b>D</b> represents the electric flux per unit area and is fundamental in electrostatics.</p>
+    <h3>Electric Flux Density for an Infinite Sheet</h3>
+    <p>For an infinite sheet of charge with surface charge density <b>σ</b>, the electric flux density is given by:</p>
+    <p><b>D = σ/2</b></p>
+    <p>The electric field intensity <b>E</b> is:</p>
+    <p><b>E = σ / (2ε)</b></p>
+    <p>This result follows from applying Gauss's law to a Gaussian pillbox around the sheet.</p>
+    
+    <h3>Electric Flux Density for a Volume Charge Distribution</h3>
+    <p>For a volume charge distribution with charge density <b>ρ</b>, the electric flux density is determined using Gauss’s law in differential form:</p>
+    <p><b>∇ · D = ρ</b></p>
+    <p>In integral form:</p>
+    <p><b>∮ D · dA = Q_{enc}</b></p>
+    <p>where <b>Q_{enc}</b> is the total charge enclosed within the Gaussian surface.</p>
+
+    <h2>Calculation of Electric Field, Potential, and Energy</h2>
+    <p>
+        The electric field \(\mathbf{E}\) due to a point charge \(Q\) is given by:
+        \[
+        \mathbf{E} = \frac{1}{4\pi\epsilon_0} \frac{Q}{r^2} \mathbf{a}_r
+        \]
+        The electric potential \(V\) at a point due to a charge distribution is:
+        \[
+        V = \frac{1}{4\pi\epsilon_0} \int \frac{dq}{r}
+        \]
+        The potential energy \(U\) of a system of charges is:
+        \[
+        U = \frac{1}{2} \sum_{i \neq j} \frac{Q_i Q_j}{4\pi\epsilon_0 r_{ij}}
+        \]
+    </p>
+
+    <h2>Gauss's Law: Statement, Derivation, and Formulas</h2>
+    
+    <h3>Statement of Gauss's Law</h3>
+    <p>Gauss’s law states that the total electric flux <em>&Phi;<sub>E</sub></em> through a closed surface is equal to <em>1/&epsilon;<sub>0</sub></em> times the total charge enclosed within the surface:</p>
+    <p>
+        <math>
+            <mrow>
+                <mo>&#8747;</mo>
+                <msub>
+                    <mi>S</mi>
+                </msub>
+                <mi>E</mi>
+                <mo>&#8901;</mo>
+                <mi>dA</mi>
+                <mo>=</mo>
+                <mfrac>
+                    <mrow>
+                        <mi>Q</mi>
+                        <msub>
+                            <mi>enc</mi>
+                        </msub>
+                    </mrow>
+                    <msub>
+                        <mi>&epsilon;</mi>
+                        <mn>0</mn>
+                    </msub>
+                </mfrac>
+            </mrow>
+        </math>
+    </p>
+    
+    <h3>Derivation Using the Divergence Theorem</h3>
+    <p>The divergence theorem states:</p>
+    <p>
+        <math>
+            <mrow>
+                <mo>&#8747;</mo>
+                <msub>
+                    <mi>S</mi>
+                </msub>
+                <mi>F</mi>
+                <mo>&#8901;</mo>
+                <mi>dA</mi>
+                <mo>=</mo>
+                <mo>&#8747;</mo>
+                <msub>
+                    <mi>V</mi>
+                </msub>
+                <mo>&#8711;</mo>
+                <mo>&#8901;</mo>
+                <mi>F</mi>
+                <mi>dV</mi>
+            </mrow>
+        </math>
+    </p>
+    <p>Applying this to Gauss’s law:</p>
+    <p>
+        <math>
+            <mrow>
+                <mo>&#8747;</mo>
+                <msub>
+                    <mi>S</mi>
+                </msub>
+                <mi>E</mi>
+                <mo>&#8901;</mo>
+                <mi>dA</mi>
+                <mo>=</mo>
+                <mo>&#8747;</mo>
+                <msub>
+                    <mi>V</mi>
+                </msub>
+                <mo>&#8711;</mo>
+                <mo>&#8901;</mo>
+                <mi>E</mi>
+                <mi>dV</mi>
+            </mrow>
+        </math>
+    </p>
+    <p>Since the enclosed charge is:</p>
+    <p>
+        <math>
+            <mrow>
+                <mi>Q</mi>
+                <msub>
+                    <mi>enc</mi>
+                </msub>
+                <mo>=</mo>
+                <mo>&#8747;</mo>
+                <msub>
+                    <mi>V</mi>
+                </msub>
+                <mi>&rho;</mi>
+                <mi>dV</mi>
+            </mrow>
+        </math>
+    </p>
+    <p>We obtain the differential form of Gauss’s law:</p>
+    <p>
+        <math>
+            <mrow>
+                <mo>&#8711;</mo>
+                <mo>&#8901;</mo>
+                <mi>E</mi>
+                <mo>=</mo>
+                <mfrac>
+                    <mi>&rho;</mi>
+                    <msub>
+                        <mi>&epsilon;</mi>
+                        <mn>0</mn>
+                    </msub>
+                </mfrac>
+            </mrow>
+        </math>
+    </p>
+    
+    <h2>Gauss's Law in Maxwell’s Equations</h2>
+    <h3>Integral Form</h3>
+    <p>
+        <math>
+            <mrow>
+                <mo>&#8747;</mo>
+                <msub>
+                    <mi>S</mi>
+                </msub>
+                <mi>E</mi>
+                <mo>&#8901;</mo>
+                <mi>dA</mi>
+                <mo>=</mo>
+                <mfrac>
+                    <mi>Q</mi>
+                    <msub>
+                        <mi>&epsilon;</mi>
+                        <mn>0</mn>
+                    </msub>
+                </mfrac>
+            </mrow>
+        </math>
+    </p>
+    <h3>Differential Form</h3>
+    <p>
+        <math>
+            <mrow>
+                <mo>&#8711;</mo>
+                <mo>&#8901;</mo>
+                <mi>E</mi>
+                <mo>=</mo>
+                <mfrac>
+                    <mi>&rho;</mi>
+                    <msub>
+                        <mi>&epsilon;</mi>
+                        <mn>0</mn>
+                    </msub>
+                </mfrac>
+            </mrow>
+        </math>
+    </p>
+
+    <h2> Polarization in Dielectrics</h2>
+    <p>
+        When a dielectric material is placed in an electric field, it becomes polarized. The polarization \(\mathbf{P}\)
+        is defined as the dipole moment per unit volume:
+        \[
+        \mathbf{P} = \epsilon_0 \chi_e \mathbf{E}
+        \]
+        where \(\chi_e\) is the electric susceptibility of the material.
+    </p>
+
+    <h2> Bound Charges</h2>
+    <p>
+        Polarization in a dielectric leads to the formation of bound charges. The bound surface charge density
+        \(\sigma_b\) and bound volume charge density \(\rho_b\) are given by:
+        \[
+        \sigma_b = \mathbf{P} \cdot \mathbf{n}, \quad \rho_b = -\nabla \cdot \mathbf{P}
+        \]
+    </p>
+
+    <h2>Dielectric Constant and Strength</h2>
+    <p>
+        The dielectric constant \(\epsilon_r\) is a measure of how much a material can reduce the electric field:
+        \[
+        \epsilon_r = 1 + \chi_e
+        \]
+        The dielectric strength is the maximum electric field a material can withstand without breaking down.
+    </p>
+
+    <h2> Continuity Equation and Relaxation Time</h2>
+    <p>
+        The continuity equation describes the conservation of charge:
+        \[
+        \nabla \cdot \mathbf{J} + \frac{\partial \rho}{\partial t} = 0
+        \]
+        The relaxation time \(\tau\) is the time it takes for a charge distribution to decay to \(1/e\) of its initial
+        value:
+        \[
+        \tau = \frac{\epsilon}{\sigma}
+        \]
+        where \(\sigma\) is the conductivity of the material.
+    </p>
+
+    <h2>Boundary Conditions</h2>
+    <p>
+        At the interface between two media, the electric field and displacement field must satisfy certain boundary
+        conditions:
+        \[
+        \mathbf{E}_{1t} = \mathbf{E}_{2t}, \quad \mathbf{D}_{1n} - \mathbf{D}_{2n} = \sigma_f
+        \]
+        where \(\sigma_f\) is the free surface charge density.
+    </p>
+
+</body>
+
+</html>
